@@ -15,19 +15,18 @@ export async function sendMessage(req, res) {
             title
         });
     }
-    const currentChatId = chatId || chat._id;
-
     const userMessage = await messageModel.create({
         chat: currentChatId,
         content: message,
         role: "user"
     });
-    const messages = await messageModel.find({ chat: currentChatId });
+
+    const messages = await messageModel.find({ chat: chatId || chat._id })
 
     const result = await generateResponse(messages);
 
     const aiMessage = await messageModel.create({
-        chat: currentChatId,
+        chat: chatId || chat._id,
         content: result,
         role: "ai"
     });
