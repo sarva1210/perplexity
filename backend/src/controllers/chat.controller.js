@@ -15,6 +15,8 @@ export async function sendMessage(req, res) {
             title
         });
     }
+    const currentChatId = chatId || chat._id;
+    
     const userMessage = await messageModel.create({
         chat: currentChatId,
         content: message,
