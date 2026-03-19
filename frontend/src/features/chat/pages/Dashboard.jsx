@@ -83,7 +83,7 @@ const Dashboard = () => {
               <h2 className="text-3xl font-semibold">Welcome to Perplexity</h2>
               <p className="text-white/50">Ask anything and get intelligent answers instantly.</p>
               <p className="text-white/40 mt-4">Start a new conversation from below</p>
-              
+
             </div>
           )}
 
@@ -95,8 +95,7 @@ const Dashboard = () => {
                   ${message.role === 'user'
                     ? 'ml-auto bg-white/10 border border-white/20 text-white rounded-2xl rounded-br-none'
                     : 'mr-auto bg-white/5 border border-white/10 text-white/90 rounded-2xl rounded-bl-none'
-                  }`}
-              >
+                  }`}>
                 {message.role === 'user' ? (
                   <p>{message.content}</p>
                 ) : (
@@ -113,8 +112,7 @@ const Dashboard = () => {
                           {children}
                         </pre>
                       )
-                    }}
-                  >
+                    }}>
                     {message.content}
                   </ReactMarkdown>
                 )}
@@ -143,6 +141,7 @@ const Dashboard = () => {
                 className="px-5 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition disabled:opacity-40">
                  Send
                 </button>
+                
               </div>
             </form>
           </footer>
