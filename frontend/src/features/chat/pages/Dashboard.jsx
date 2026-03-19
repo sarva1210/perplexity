@@ -79,9 +79,11 @@ const Dashboard = () => {
 
           {!currentChatId && (
             <div className="flex flex-col items-center justify-center text-center space-y-4 flex-1">
+
               <h2 className="text-3xl font-semibold">Welcome to Perplexity</h2>
               <p className="text-white/50">Ask anything and get intelligent answers instantly.</p>
               <p className="text-white/40 mt-4">Start a new conversation from below</p>
+              
             </div>
           )}
 
