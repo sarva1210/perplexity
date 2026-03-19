@@ -32,9 +32,9 @@ const Dashboard = () => {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-[#05070d] via-[#0b1020] to-[#05070d] text-white flex">
+    <main className="h-screen overflow-hidden bg-gradient-to-br from-[#05070d] via-[#0b1020] to-[#05070d] text-white flex">
 
-      <aside className={`${isSidebarOpen ? 'w-64' : 'w-16'} transition-all duration-300 p-4 hidden md:flex flex-col 
+      <aside className={`${isSidebarOpen ? 'w-64' : 'w-16'} h-full transition-all duration-300 p-4 hidden md:flex flex-col 
         bg-white/5 backdrop-blur-xl border-r border-white/10 relative`}>
 
         <button
@@ -73,27 +73,19 @@ const Dashboard = () => {
 
       </aside>
 
-      <section className="flex-1 flex flex-col items-center justify-center p-6 relative">
+      <section className="flex-1 flex flex-col items-center p-6 relative h-full overflow-hidden">
 
         <div className="w-full max-w-3xl flex flex-col h-full">
 
           {!currentChatId && (
-  <div className="flex flex-col items-center justify-center text-center space-y-4 flex-1">
-    <h2 className="text-3xl font-semibold">
-      Welcome to Perplexity
-    </h2>
+            <div className="flex flex-col items-center justify-center text-center space-y-4 flex-1">
+              <h2 className="text-3xl font-semibold">Welcome to Perplexity</h2>
+              <p className="text-white/50">Ask anything and get intelligent answers instantly.</p>
+              <p className="text-white/40 mt-4">Start a new conversation from below</p>
+            </div>
+          )}
 
-    <p className="text-white/50">
-      Ask anything and get intelligent answers instantly.
-    </p>
-
-    <p className="text-white/40 mt-4">
-      Start a new conversation from below
-    </p>
-  </div>
-)}
-
-          <div className="flex-1 overflow-y-auto space-y-4 pb-32 pr-1">
+          <div className="flex-1 overflow-y-auto scroll-smooth no-scrollbar space-y-4 pb-32 pr-1">
             {chats[currentChatId]?.messages.map((message) => (
               <div
                 key={message.id}
@@ -129,36 +121,29 @@ const Dashboard = () => {
           </div>
 
           <footer className="absolute bottom-4 left-0 w-full flex justify-center px-4">
-  
-  <form
-    onSubmit={handleSubmitMessage}
-    className="w-full max-w-3xl rounded-2xl p-[1px] 
-      bg-gradient-to-r from-red-500 via-pink-500 to-purple-500"
-  >
+            <form 
+            onSubmit={handleSubmitMessage}
+            className="w-full max-w-3xl rounded-2xl p-[1px] bg-gradient-to-r from-red-500 via-pink-500 to-purple-500">
 
-    <div className="flex items-center gap-3 bg-[#0b0f1a] rounded-2xl px-4 py-3">
-
-      <input
-        type="text"
-        value={chatInput}
-        onChange={(event) => setChatInput(event.target.value)}
-        placeholder="Ask anything..."
-        className="flex-1 bg-transparent outline-none text-white placeholder:text-white/40"
-      />
-
-      <button
-        type="submit"
-        disabled={!chatInput.trim()}
-        className="px-5 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition disabled:opacity-40"
-      >
-        Send
-      </button>
-
-    </div>
-
-  </form>
-
-</footer>
+              <div className="flex items-center gap-3 bg-[#0b0f1a] rounded-2xl px-4 py-3">
+                
+                <input
+                type="text"
+                value={chatInput}
+                onChange={(event) => setChatInput(event.target.value)}
+                placeholder="Ask anything..."
+                className="flex-1 bg-transparent outline-none text-white placeholder:text-white/40"
+                />
+                
+                <button 
+                type="submit"
+                disabled={!chatInput.trim()}
+                className="px-5 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition disabled:opacity-40">
+                 Send
+                </button>
+              </div>
+            </form>
+          </footer>
 
         </div>
       </section>
