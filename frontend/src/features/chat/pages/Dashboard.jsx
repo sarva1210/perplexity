@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { useSelector } from 'react-redux'
 import { useChat } from '../hooks/useChat'
+import remarkGfm from 'remark-gfm'
 
 const Dashboard = () => {
   const chat = useChat()
@@ -28,7 +29,7 @@ const Dashboard = () => {
   }
 
   const openChat = (chatId) => {
-    chat.handleOpenChat(chatId)
+    chat.handleOpenChat(chatId,chats)
   }
 
   return (
@@ -112,7 +113,7 @@ const Dashboard = () => {
                           {children}
                         </pre>
                       )
-                    }}>
+                    }} remarkPlugins={[remarkGfm]} >
                     {message.content}
                   </ReactMarkdown>
                 )}
